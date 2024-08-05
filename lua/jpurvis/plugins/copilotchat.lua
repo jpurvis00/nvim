@@ -1,18 +1,3 @@
---return {
---	{
---		"CopilotC-Nvim/CopilotChat.nvim",
---		branch = "canary",
---		dependencies = {
---			{ "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
---			{ "nvim-lua/plenary.nvim" }, -- for curl, log wrapper
---		},
---		opts = {
---			debug = true, -- Enable debugging
---			-- See Configuration section for rest
---		},
---		-- See Commands section for default commands if you want to lazy load on them
---	},
---}
 local IS_DEV = false
 
 local prompts = {
@@ -61,11 +46,26 @@ return {
 			prompts = prompts,
 			auto_follow_cursor = false, -- Don't follow the cursor after getting response
 			show_help = false, -- Show help in virtual text, set to true if that's 1st time using Copilot Chat
+			-- default window options
+			window = {
+				layout = "float", -- 'vertical', 'horizontal', 'float', 'replace'
+				width = 0.5, -- fractional width of parent, or absolute width in columns when > 1
+				height = 0.5, -- fractional height of parent, or absolute height in rows when > 1
+				-- Options below only apply to floating windows
+				relative = "editor", -- 'editor', 'win', 'cursor', 'mouse'
+				border = "single", -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
+				row = nil, -- row position of the window, default is centered
+				col = nil, -- column position of the window, default is centered
+				title = "Copilot Chat", -- title of chat window
+				footer = nil, -- footer of chat window
+				zindex = 100, -- determines if window is on top or below other floating windows
+				windlend = 0, -- set the transparency level of the floating window
+			},
 			mappings = {
 				-- Use tab for completion
 				complete = {
 					detail = "Use @<Tab> or /<Tab> for options.",
-					insert = "<Tab>",
+					insert = "<S-Tab>",
 				},
 				-- Close the chat
 				close = {
@@ -80,7 +80,7 @@ return {
 				-- Submit the prompt to Copilot
 				submit_prompt = {
 					normal = "<CR>",
-					insert = "<C-CR>",
+					insert = "<CR>",
 				},
 				-- Accept the diff
 				accept_diff = {
