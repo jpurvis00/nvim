@@ -50,7 +50,7 @@ return {
 			window = {
 				layout = "float", -- 'vertical', 'horizontal', 'float', 'replace'
 				width = 0.5, -- fractional width of parent, or absolute width in columns when > 1
-				height = 0.5, -- fractional height of parent, or absolute height in rows when > 1
+				height = 0.95, -- fractional height of parent, or absolute height in rows when > 1
 				-- Options below only apply to floating windows
 				relative = "editor", -- 'editor', 'win', 'cursor', 'mouse'
 				border = "single", -- 'none', single', 'double', 'rounded', 'solid', 'shadow'
@@ -58,7 +58,7 @@ return {
 				col = nil, -- column position of the window, default is centered
 				title = "Copilot Chat", -- title of chat window
 				footer = nil, -- footer of chat window
-				zindex = 100, -- determines if window is on top or below other floating windows
+				zindex = 1, -- determines if window is on top or below other floating windows
 				windlend = 0, -- set the transparency level of the floating window
 			},
 			mappings = {
@@ -209,20 +209,20 @@ return {
 			{ "<leader>an", "<cmd>CopilotChatBetterNamings<cr>", desc = "CopilotChat - Better Naming" },
 			-- Chat with Copilot in visual mode
 			{
-				"<leader>av",
+				"<leader>cpv",
 				":CopilotChatVisual",
 				mode = "x",
 				desc = "CopilotChat - Open in vertical split",
 			},
 			{
-				"<leader>aI",
+				"<leader>cpI",
 				":CopilotChatInline<cr>",
 				mode = "x",
 				desc = "CopilotChat - Inline chat",
 			},
 			-- Custom input for CopilotChat
 			{
-				"<leader>ai",
+				"<leader>cpi",
 				function()
 					local input = vim.fn.input("Ask Copilot: ")
 					if input ~= "" then
@@ -244,7 +244,7 @@ return {
 			},
 			-- Quick chat with Copilot
 			{
-				"<leader>aq",
+				"<leader>cpq",
 				function()
 					local input = vim.fn.input("Quick Chat: ")
 					if input ~= "" then
@@ -254,15 +254,15 @@ return {
 				desc = "CopilotChat - Quick chat",
 			},
 			-- Debug
-			{ "<leader>ad", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
+			{ "<leader>cpd", "<cmd>CopilotChatDebugInfo<cr>", desc = "CopilotChat - Debug Info" },
 			-- Fix the issue with diagnostic
-			{ "<leader>af", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
+			{ "<leader>cpf", "<cmd>CopilotChatFixDiagnostic<cr>", desc = "CopilotChat - Fix Diagnostic" },
 			-- Clear buffer and chat history
-			{ "<leader>al", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
+			{ "<leader>cpc", "<cmd>CopilotChatReset<cr>", desc = "CopilotChat - Clear buffer and chat history" },
 			-- Toggle Copilot Chat Vsplit
-			{ "<leader>av", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
+			{ "<leader>cpo", "<cmd>CopilotChatToggle<cr>", desc = "CopilotChat - Toggle" },
 			-- Copilot Chat Models
-			{ "<leader>a?", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
+			{ "<leader>c?", "<cmd>CopilotChatModels<cr>", desc = "CopilotChat - Select Models" },
 		},
 	},
 }
