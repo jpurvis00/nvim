@@ -28,7 +28,7 @@ return {
 				:find()
 		end
 
-		vim.keymap.set("n", "<C-h>", function()
+		vim.keymap.set("n", "<leader>ht", function()
 			toggle_telescope(harpoon:list())
 		end, { desc = "Open harpoon window" })
 

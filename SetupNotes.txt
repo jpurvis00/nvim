@@ -1,0 +1,32 @@
+The following are some notes on setup and config for neovim and plugins.
+A lot of this has been a fight to get working, so I'm documenting it here.
+I'm new to neovim/lua and the whole ecosystem, so I'm sure there are better 
+ways to do some of this.
+
+Sql notes:
+- I'm using MSSQL.
+- I tried setting up and using nvim-dadbod, nvim-dadbod-ui, and nvim-dadbod-completion.
+    I never could get nvim-dadbod-completion to work, so I gave up on it. Not sure what I was doing wrong.
+- I've decided that nvim-dadbod-ui is not going to work for me. It is setting the width of the column in the
+    results set to the width of the column definition(nvchar(250)). If my first 1 or 2 columns has this, I can't see
+    the rest of the results without scrolling.
+- I found that I can use sqls-server and sqls.nvim to get better results. One caveat to this is that you
+    need to create an sql file and use that to run your queries.
+    - ***** Sqls* commands were not avaiable at first. I installed the sqls-server first and didn't
+        realize that you needed to install sqls.nvim to get to the commands.
+    - For sqls-server, I had to install go using chocolatey. Then install sqls-server using go install.
+    - There is config in the lspconfig.lua and I created sqls.lua for additional config. Possibly could 
+        have put it all in one file but still too new to this to know for sure.
+    - In order to get multiple connections setup, I had to put them in a config file. This is done so that 
+        I can keep my connection information out of my git repo. According to the 
+        docs(https://github.com/sqls-server/sqls?tab=readme-ov-file), one option is to put the connections
+        in a config.yml file. The default dir for this is $XDG_CONFIG_HOME/sqls/config.yml. $XDG_CONFIG_HOME
+        parses out to $HOME/.config/
+
+Initial setup notes:
+- Followed along with this video for initial setup: https://www.youtube.com/watch?v=6pAG3BHurdM
+- Using Mason(:Mason) to install lsp's/linters/formatters/dap adapters. This is a package manager for neovim.
+- Using Lazy(:Lazy) to install plugins. This is a package manager for neovim. 
+
+ToDo's:
+- Need to look into Git integrations: fugitive, git-blame, git-messenger, gitlinker

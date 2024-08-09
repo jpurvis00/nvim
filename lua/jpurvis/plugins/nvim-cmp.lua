@@ -16,6 +16,7 @@ return {
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
+		--"kristijanhusak/vim-dadbod-completion", -- completion for vim-dadbod
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -42,7 +43,7 @@ return {
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-				["<C-e>"] = cmp.mapping.abort(), -- close completion window
+				["<C-a>"] = cmp.mapping.abort(), -- close completion window
 				["<CR>"] = cmp.mapping.confirm({ select = false }),
 			}),
 			-- sources for autocompletion
@@ -51,6 +52,9 @@ return {
 				{ name = "luasnip" }, -- snippets
 				{ name = "buffer" }, -- text within current buffer
 				{ name = "path" }, -- file system paths
+				{ name = "cmdline" }, -- command-line mode
+				{ name = "sqlls" }, -- completion for vim-dadbod
+				--{ name = "dbui" }, -- completion for vim-dadbod
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
@@ -60,6 +64,15 @@ return {
 				}),
 				expandable_indicator = false,
 			},
+			-- setup vim-dadbod
+			--cmp.setup.filetype({ "sql" }, {
+			--filetype = {
+			--	{ "sql" },
+			--	sources = {
+			--		{ name = "vim-dadbod-completion" },
+			--		{ name = "buffer" },
+			--	},
+			--},
 		})
 
 		local function setup_cmp()

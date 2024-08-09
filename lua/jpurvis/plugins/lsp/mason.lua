@@ -47,6 +47,7 @@ return {
 				"sql-formatter",
 				"typos",
 				"eslint_d",
+				--"tsserver",
 			},
 		})
 	end,
