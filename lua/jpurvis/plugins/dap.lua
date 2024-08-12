@@ -19,7 +19,16 @@ return {
 				name = "launch - netcoredbg",
 				request = "launch",
 				program = function()
-					return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net", "file")
+					--return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net", "file")
+					--return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net6.0/", "file")
+
+					-- The following will look in the root dir of the solution for the csproj file.
+					-- It the extracts just the name and uses that to find the dll in the bin folder
+					-- to automatically start the debug process. With the two lines above, you would
+					-- have to manually enter the path to the dll everytime you started it.
+					local csproj_file = vim.fn.glob(vim.fn.getcwd() .. "/*.csproj")
+					local project_name = vim.fn.fnamemodify(csproj_file, ":t:r")
+					return vim.fn.getcwd() .. "/bin/Debug/net6.0/" .. project_name .. ".dll"
 				end,
 				autoReload = {
 					enable = true,
