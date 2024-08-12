@@ -39,4 +39,7 @@ luac.out
 *.x86_64
 *.hex
  # environment files
+
+# Misc files
 .env
+lazy-lock.json
