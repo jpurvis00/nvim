@@ -1,5 +1,6 @@
 SELECT
     UserId,
-    UserName
+    UserName,
+    u.Email
 FROM
-    UserProfile
+    UserProfile u

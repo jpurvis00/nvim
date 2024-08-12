@@ -50,7 +50,8 @@ Terminal setup notes:
      - clone nvim repo into this dir
 
 Needed to install the following dependencies to get all plugins working for neovim:
-- choco install zig - kept timing out. Installed winget: winget install -e --id Zig.Zig
+- choco install zig - kept timing out. Installed winget: winget install -e --id Zig.Zig(needed for the failure of a plugin
+    that I can't remember off the top of my head)
 - choco install ripgrep
 - choco install nodejs - this is needed for all the lsp servers. All installs for mason are failing without this.
 - choco install make
