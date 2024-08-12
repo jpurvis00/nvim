@@ -47,6 +47,9 @@ return {
 				"sql-formatter",
 				"typos",
 				"eslint_d",
+				"netcoredbg",
+				"firefox-debug-adapter",
+				"chrome-debug-adapter",
 				--"tsserver",
 			},
 		})

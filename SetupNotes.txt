@@ -30,3 +30,31 @@ Initial setup notes:
 
 ToDo's:
 - Need to look into Git integrations: fugitive, git-blame, git-messenger, gitlinker
+
+Terminal setup notes:
+- Install chocolatey - https://chocolatey.org/install#individual
+- Need to install nerd fonts  - https://www.nerdfonts.com
+    - at the moment using CaskaydiaCove Nerd Font
+- Install posh themes - https://ohmyposh.dev
+- Powershell settings are kept in $HOME/documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+    - update profile
+    - had trouble with powershell profile not being loaded. Check $profile to see the correct path of the ps1 file.
+- Install Lsd to give us unix like ls command
+    - choco install lsd
+- Install neovim
+    - choco install neovim
+- Add the following to your environment variables. Helps me see the blue better since I'm a bit color blind.
+    - LS_COLORS=di=01;34
+- Install git
+- Create an nvim dir. $HOME/appdata/local/nvim
+     - clone nvim repo into this dir
+
+Needed to install the following dependencies to get all plugins working for neovim:
+- choco install zig - kept timing out. Installed winget: winget install -e --id Zig.Zig
+- choco install ripgrep
+- choco install nodejs - this is needed for all the lsp servers. All installs for mason are failing without this.
+- choco install make
+- choco install mingw - this is needed for telescope-fzf-native.nvim error that we get onload - it installs gcc
+    - go to nvim-data/lazy/tele-fzf-native.nvim and run make
+- chsharp_ls install failed.
+    - winget install Microsoft.dotnet.sdk.8
