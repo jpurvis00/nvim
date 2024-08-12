@@ -3,6 +3,9 @@ A lot of this has been a fight to get working, so I'm documenting it here.
 I'm new to neovim/lua and the whole ecosystem, so I'm sure there are better 
 ways to do some of this.
 
+ToDo's:
+- Need to look into Git integrations: fugitive, git-blame, git-messenger, gitlinker
+
 Sql notes:
 - I'm using MSSQL.
 - I tried setting up and using nvim-dadbod, nvim-dadbod-ui, and nvim-dadbod-completion.
@@ -27,9 +30,6 @@ Initial setup notes:
 - Followed along with this video for initial setup: https://www.youtube.com/watch?v=6pAG3BHurdM
 - Using Mason(:Mason) to install lsp's/linters/formatters/dap adapters. This is a package manager for neovim.
 - Using Lazy(:Lazy) to install plugins. This is a package manager for neovim. 
-
-ToDo's:
-- Need to look into Git integrations: fugitive, git-blame, git-messenger, gitlinker
 
 Terminal setup notes:
 - Install chocolatey - https://chocolatey.org/install#individual
