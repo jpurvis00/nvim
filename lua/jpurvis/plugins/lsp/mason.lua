@@ -32,7 +32,8 @@ return {
 				"cssls",
 				"tailwindcss",
 				"lua_ls",
-				"csharp_ls",
+				--"csharp_ls",
+				"omnisharp",
 				"jsonls",
 				"sqlls",
 				"yamlls",
@@ -50,7 +51,7 @@ return {
 				"netcoredbg",
 				"firefox-debug-adapter",
 				"chrome-debug-adapter",
-				--"tsserver",
+				"tsserver",
 			},
 		})
 	end,

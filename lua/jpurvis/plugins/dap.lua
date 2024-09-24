@@ -12,7 +12,6 @@ return {
 			command = "C:/Users/jeffp/AppData/Local/netcoredbg/netcoredbg",
 			args = { "--interpreter=vscode" },
 		}
-
 		dap.configurations.cs = {
 			{
 				type = "coreclr",
@@ -91,6 +90,7 @@ return {
 		)
 
 		dapui.setup({
+			force_buffers = true, -- remove if causes issues
 			icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
 			mappings = {
 				-- Use a table to apply multiple mappings
@@ -188,7 +188,43 @@ return {
 			},
 		}
 
+		dap.adapters.chrome = {
+			type = "executable",
+			command = "node",
+			--args = { os.getenv("HOME") .. "/path/to/vscode-chrome-debug/out/src/chromeDebug.js" }, -- TODO adjust
+			args = { "C:/Program Files/vscode-chrome-debug/out/src/chromeDebug.js" }, -- TODO adjust
+		}
+
+		dap.configurations.javascript = { -- change this to javascript if needed
+			{
+				name = "Launch Chrome against localhost",
+				type = "chrome",
+				request = "attach",
+				program = "${file}",
+				cwd = vim.fn.getcwd(),
+				sourceMaps = true,
+				protocol = "inspector",
+				port = 9222,
+				webRoot = "${workspaceFolder}",
+			},
+		}
+
+		dap.configurations.typescript = { -- change to typescript if needed
+			{
+				name = "Launch Chrome against localhost",
+				type = "chrome",
+				request = "attach",
+				program = "${file}",
+				cwd = vim.fn.getcwd(),
+				sourceMaps = true,
+				protocol = "inspector",
+				port = 9222,
+				webRoot = "${workspaceFolder}",
+			},
+		}
 		dap.configurations.javascript = dap.configurations.typescript
+
+		dap.set_log_level("DEBUG")
 
 		dap.listeners.before.attach.dapui_config = function()
 			dapui.open()

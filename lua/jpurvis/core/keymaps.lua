@@ -17,3 +17,10 @@ keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" })
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" })
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" })
+
+-- turn on/off copilot
+keymap.set("n", "<leader>cpd", "<cmd>Copilot disable<CR>", { desc = "Copilot - disable" })
+keymap.set("n", "<leader>cpe", "<cmd>Copilot enable<CR>", { desc = "Copilot - enable" })
+
+keymap.set("n", "<leader>r", "<cmd>Run<CR>", { desc = "Run C# Program" })
+keymap.set("n", "<leader>de", "<cmd>Debug<CR>", { desc = "Debug C# Program - DAP" })

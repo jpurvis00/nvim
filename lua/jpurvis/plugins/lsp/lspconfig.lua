@@ -69,7 +69,8 @@ return {
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = cmp_nvim_lsp.default_capabilities()
+		--local capabilities = cmp_nvim_lsp.default_capabilities()
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		-- (not in youtube nvim video)
@@ -86,28 +87,28 @@ return {
 					capabilities = capabilities,
 				})
 			end,
-			["svelte"] = function()
-				-- configure svelte server
-				lspconfig["svelte"].setup({
-					capabilities = capabilities,
-					on_attach = function(client, bufnr)
-						vim.api.nvim_create_autocmd("BufWritePost", {
-							pattern = { "*.js", "*.ts" },
-							callback = function(ctx)
-								-- Here use ctx.match instead of ctx.file
-								client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-							end,
-						})
-					end,
-				})
-			end,
-			["graphql"] = function()
-				-- configure graphql language server
-				lspconfig["graphql"].setup({
-					capabilities = capabilities,
-					filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-				})
-			end,
+			--	["svelte"] = function()
+			--		-- configure svelte server
+			--		lspconfig["svelte"].setup({
+			--			capabilities = capabilities,
+			--			on_attach = function(client, bufnr)
+			--				vim.api.nvim_create_autocmd("BufWritePost", {
+			--					pattern = { "*.js", "*.ts" },
+			--					callback = function(ctx)
+			--						-- Here use ctx.match instead of ctx.file
+			--						client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+			--					end,
+			--				})
+			--			end,
+			--		})
+			--	end,
+			--	["graphql"] = function()
+			--		-- configure graphql language server
+			--		lspconfig["graphql"].setup({
+			--			capabilities = capabilities,
+			--			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+			--		})
+			--	end,
 			["emmet_ls"] = function()
 				-- configure emmet language server
 				lspconfig["emmet_ls"].setup({
@@ -139,6 +140,78 @@ return {
 							},
 						},
 					},
+				})
+			end,
+			--["omnisharp"] = function()
+			--	lspconfig["omnisharp"].setup({
+			--		capabilities = capabilities,
+			--		cmd = {
+			--			"dotnet",
+			--			vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
+			--			"--languageserver",
+			--		},
+			--		enable_import_completion = true,
+			--		organize_imports_on_format = true,
+			--		enable_roslyn_analyzers = true,
+			--		root_dir = function()
+			--			return vim.loop.cwd() -- current working directory
+			--		end,
+			--	})
+			--end,
+			["omnisharp"] = function()
+				lspconfig["omnisharp"].setup({
+					capabilities = capabilities,
+					cmd = {
+						"dotnet",
+						vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
+						"--languageserver",
+					},
+					enable_editor_config_support = true,
+					enable_import_completion = true,
+					organize_imports_on_format = true,
+					enable_roslyn_analyzers = true,
+					settings = {
+						diagnostics = {
+							display = {
+								width = 80, -- Set this to a value that fits your screen
+							},
+						},
+						["omnisharp.formattingOptions"] = {
+							NewLine = "\n",
+							UseTabs = false,
+							TabSize = 4,
+							IndentationSize = 4,
+							NewLinesForBracesInTypes = true,
+							NewLinesForBracesInMethods = true,
+							NewLinesForBracesInProperties = true,
+							NewLinesForBracesInAccessors = true,
+							NewLinesForBracesInAnonymousMethods = true,
+							NewLinesForBracesInControlBlocks = true,
+							NewLinesForBracesInAnonymousTypes = true,
+							NewLinesForBracesInObjectCollectionArrayInitializers = true,
+							NewLinesForBracesInLambdaExpressionBody = true,
+							NewLineForElse = true,
+							NewLineForCatch = true,
+							NewLineForFinally = true,
+							NewLineForMembersInObjectInit = true,
+							NewLineForMembersInAnonymousTypes = true,
+							NewLineForClausesInQuery = true,
+							WrapLongLines = true, -- Enable line wrapping
+						},
+					},
+					root_dir = function()
+						return vim.loop.cwd() -- current working directory
+					end,
+				})
+			end,
+			["tsserver"] = function()
+				lspconfig["tsserver"].setup({
+					capabilities = capabilities,
+				})
+			end,
+			["sqls"] = function()
+				lspconfig["sqls"].setup({
+					capabilities = capabilities,
 				})
 			end,
 			require("lspconfig").sqls.setup({

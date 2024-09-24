@@ -39,7 +39,7 @@ return {
 			keymap("i", "<C-i>", "<Plug>(copilot-accept-line)", opts)
 
 			-- Set <C-j> to next suggestion, <C-k> to previous suggestion, <C-l> to suggest
-			keymap("i", "<C-j>", "<Plug>(copilot-next)", opts)
+			--keymap("i", "<C-j>", "<Plug>(copilot-next)", opts)
 			keymap("i", "<C-k>", "<Plug>(copilot-previous)", opts)
 			keymap("i", "<C-l>", "<Plug>(copilot-suggest)", opts)
 

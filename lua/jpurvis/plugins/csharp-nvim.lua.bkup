@@ -1,0 +1,14 @@
+return {
+	"iabdelkareem/csharp.nvim",
+	dependencies = {
+		"williamboman/nvim-dap",
+		"Tastyep/structlog.nvim", -- Optional, but highly recommended for debugging
+	},
+	config = function()
+		require("csharp").setup()
+		require("csharp").debug_project()
+		require("csharp").run_project()
+		require("csharp").fix_usings()
+		-- require("csharp").fix_all()
+	end,
+}

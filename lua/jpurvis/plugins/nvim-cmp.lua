@@ -23,6 +23,22 @@ return {
 
 		local luasnip = require("luasnip")
 
+		vim.keymap.set({ "i" }, "<C-k>", function()
+			luasnip.expand()
+		end, { silent = true })
+		vim.keymap.set({ "i", "s" }, "<C-l>", function()
+			luasnip.jump(1)
+		end, { silent = true })
+		vim.keymap.set({ "i", "s" }, "<C-j>", function()
+			luasnip.jump(-1)
+		end, { silent = true })
+
+		vim.keymap.set({ "i", "s" }, "<C-e>", function()
+			if luasnip.choice_active() then
+				luasnip.change_choice(1)
+			end
+		end, { silent = true })
+
 		local lspkind = require("lspkind")
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
@@ -38,8 +54,8 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<S-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				["<S-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+				["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+				["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
@@ -54,6 +70,7 @@ return {
 				{ name = "path" }, -- file system paths
 				{ name = "cmdline" }, -- command-line mode
 				{ name = "sqlls" }, -- completion for vim-dadbod
+				--{ name = "csharp_ls" },
 				--{ name = "dbui" }, -- completion for vim-dadbod
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu

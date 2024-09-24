@@ -10,7 +10,7 @@ return {
 				local opts = { buffer = ev.buf, silent = true }
 
 				opts.desc = "Run Query"
-				keymap.set("n", "<leader>r", "<cmd>SqlsExecuteQuery<CR>", opts)
+				keymap.set("n", "<leader>rq", "<cmd>SqlsExecuteQuery<CR>", opts)
 
 				opts.desc = "Run Query Vertical"
 				keymap.set("n", "<leader>rv", "<cmd>SqlsExecuteQueryVertical<CR>", opts)
