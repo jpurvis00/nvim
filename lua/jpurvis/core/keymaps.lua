@@ -22,5 +22,5 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 keymap.set("n", "<leader>cpd", "<cmd>Copilot disable<CR>", { desc = "Copilot - disable" })
 keymap.set("n", "<leader>cpe", "<cmd>Copilot enable<CR>", { desc = "Copilot - enable" })
 
-keymap.set("n", "<leader>r", "<cmd>Run<CR>", { desc = "Run C# Program" })
-keymap.set("n", "<leader>de", "<cmd>Debug<CR>", { desc = "Debug C# Program - DAP" })
+keymap.set("n", "<leader>r", "<cmd>Run<CR>", { desc = "Run C# Program" }) -- Run is defined in options.lua
+keymap.set("n", "<leader>de", "<cmd>Debug<CR>", { desc = "Debug C# Program - DAP" }) -- Debug is defined in options.lua
