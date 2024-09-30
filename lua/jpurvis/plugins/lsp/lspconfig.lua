@@ -204,11 +204,11 @@ return {
 					end,
 				})
 			end,
-			["tsserver"] = function()
-				lspconfig["tsserver"].setup({
-					capabilities = capabilities,
-				})
-			end,
+			--["tsserver"] = function()
+			--	lspconfig["tsserver"].setup({
+			--		capabilities = capabilities,
+			--	})
+			--end,
 			["sqls"] = function()
 				lspconfig["sqls"].setup({
 					capabilities = capabilities,

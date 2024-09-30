@@ -23,4 +23,4 @@ keymap.set("n", "<leader>cpd", "<cmd>Copilot disable<CR>", { desc = "Copilot - d
 keymap.set("n", "<leader>cpe", "<cmd>Copilot enable<CR>", { desc = "Copilot - enable" })
 
 keymap.set("n", "<leader>r", "<cmd>Run<CR>", { desc = "Run C# Program" }) -- Run is defined in options.lua
-keymap.set("n", "<leader>de", "<cmd>Debug<CR>", { desc = "Debug C# Program - DAP" }) -- Debug is defined in options.lua
+keymap.set("n", "<leader>db", "<cmd>Debug<CR>", { desc = "Debug C# Program - DAP" }) -- Debug is defined in options.lua
