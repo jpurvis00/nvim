@@ -8,6 +8,8 @@ return {
 	config = function()
 		local harpoon = require("harpoon")
 
+		harpoon:setup()
+
 		-- basic telescope configuration
 		local conf = require("telescope.config").values
 		local function toggle_telescope(harpoon_files)
@@ -50,6 +52,12 @@ return {
 		end)
 		vim.keymap.set("n", "<leader>4", function()
 			harpoon:list():select(4)
+		end)
+		vim.keymap.set("n", "<leader>5", function()
+			harpoon:list():select(5)
+		end)
+		vim.keymap.set("n", "<leader>6", function()
+			harpoon:list():select(6)
 		end)
 
 		-- Toggle previous & next buffers stored within Harpoon list

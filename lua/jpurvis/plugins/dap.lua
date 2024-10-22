@@ -46,7 +46,8 @@ return {
 
 		dap.adapters.coreclr = {
 			type = "executable",
-			command = "C:/Users/jeffp/AppData/Local/netcoredbg/netcoredbg",
+			--command = "C:/Users/jeffp/AppData/Local/netcoredbg/netcoredbg",
+			command = "C:/Users/jeffp/AppData/Local/nvim-data/mason/packages/netcoredbg/netcoredbg/netcoredbg",
 			args = { "--interpreter=vscode" },
 		}
 		dap.configurations.cs = {
@@ -55,7 +56,6 @@ return {
 				name = "launch - netcoredbg",
 				request = "launch",
 				program = function()
-					--return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net", "file")
 					--return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/net6.0/", "file")
 
 					-- The following will look in the root dir of the solution for the csproj file.
@@ -63,9 +63,30 @@ return {
 					-- to automatically start the debug process. With the two lines above, you would
 					-- have to manually enter the path to the dll everytime you started it.
 					-- This will have to change based on the project version(ie. net6.0, net7.0, etc.)
+
+					-- Get the csproj file in the current directory, returns the entire path with
+					-- file name
 					local csproj_file = vim.fn.glob(vim.fn.getcwd() .. "/*.csproj")
+
+					-- Get just the name of the project, remoove the .csproj extension and the dir
+					-- path
 					local project_name = vim.fn.fnamemodify(csproj_file, ":t:r")
-					return vim.fn.getcwd() .. "/bin/Debug/net6.0/" .. project_name .. ".dll"
+
+					-- Defines our dir structure depending on what version of .net we are using
+					local path6 = vim.fn.getcwd() .. "/bin/Debug/net6.0/" .. project_name .. ".dll"
+					local path7 = vim.fn.getcwd() .. "/bin/Debug/net7.0/" .. project_name .. ".dll"
+					local path8 = vim.fn.getcwd() .. "/bin/Debug/net8.0/" .. project_name .. ".dll"
+
+					-- Check if the directory exists and return the path to the dll
+					if vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net6.0") == 1 then
+						return path6
+					elseif vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net7.0") == 1 then
+						return path7
+					elseif vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net8.0") == 1 then
+						return path8
+					else
+						return nil -- or handle the case where none of the directories exist
+					end
 				end,
 				autoReload = {
 					enable = true,

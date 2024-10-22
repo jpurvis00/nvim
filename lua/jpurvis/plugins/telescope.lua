@@ -38,5 +38,6 @@ return {
 		keymap.set("n", "<leader>fs", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fl", "<cmd>Telescope luasnip<cr>", { desc = "Show snippets" })
+		keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>", { desc = "Show files in buffer" })
 	end,
 }
