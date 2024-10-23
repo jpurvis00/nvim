@@ -59,3 +59,12 @@ Needed to install the following dependencies to get all plugins working for neov
     - go to nvim-data/lazy/tele-fzf-native.nvim and run make
 - chsharp_ls install failed.
     - winget install Microsoft.dotnet.sdk.8
+
+Changing color of text in c# and other files as well
+    - To see what color/highlighting is being used in a buffer. Open file and type the following
+      :highlight  This will show you all the colors in the buffer and what highlight group is
+      controlling them. You can then change them from there issuing the following command..
+      :highlight Comment guifg=#00ff00
+    - To get these to take effect for good, put it in the options.lua file. There is a function in
+      there now for setting colors.
+

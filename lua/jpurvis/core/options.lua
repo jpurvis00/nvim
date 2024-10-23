@@ -52,6 +52,19 @@ vim.cmd([[
     command! Run execute '!dotnet run'
 ]])
 
+vim.cmd([[
+  highlight DiagnosticUnnecessary guifg=#767ea3
+]])
+
+-- Set colors for diagnostics and comments to go better for my sight. Diagnostic color was blending
+-- in with image background and I wanted comments to be brighter.
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = function()
+		vim.api.nvim_set_hl(0, "DiagnosticUnnecessary", { fg = "#767ea3" })
+		vim.api.nvim_set_hl(0, "Comment", { fg = "#aef7a6" })
+	end,
+})
+
 -- Set the background to transparent
 vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
 vim.cmd("highlight NonText guibg=NONE ctermbg=NONE")
