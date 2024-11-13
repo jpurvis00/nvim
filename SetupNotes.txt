@@ -68,3 +68,10 @@ Changing color of text in c# and other files as well
     - To get these to take effect for good, put it in the options.lua file. There is a function in
       there now for setting colors.
 
+Adding/changing snippets:
+    - The following was for a c# snippet
+        - The following was adding to the namespace snippet that already existed
+            - Go to the following dir/file:
+              nvim-data/lazy/friendly-snippets/snippets/csharp/csharp.json Search for the namespace
+              snippet for a reference.
+            - There are other snippets for different languages in this dir as well.
