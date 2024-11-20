@@ -39,5 +39,11 @@ return {
 		keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>", { desc = "Find todos" })
 		keymap.set("n", "<leader>fl", "<cmd>Telescope luasnip<cr>", { desc = "Show snippets" })
 		keymap.set("n", "<leader>sb", "<cmd>Telescope buffers<cr>", { desc = "Show files in buffer" })
+		keymap.set(
+			"n",
+			"<leader>fd",
+			"<cmd>Telescope lsp_workspace_symbols<cr>",
+			{ desc = "Show classes, methods, vars in current file" }
+		)
 	end,
 }
