@@ -49,10 +49,6 @@ vim.cmd([[
 ]])
 
 vim.cmd([[
-    command! Run execute '!dotnet run'
-]])
-
-vim.cmd([[
   highlight DiagnosticUnnecessary guifg=#767ea3
 ]])
 
@@ -68,3 +64,46 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- Set the background to transparent
 vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
 vim.cmd("highlight NonText guibg=NONE ctermbg=NONE")
+
+-- vim.cmd([[
+--     command! Run execute '!dotnet run'
+-- ]])
+
+vim.cmd([[
+    command! Run lua require('jpurvis.core.options').run_in_popup()
+]])
+
+local M = {}
+
+function M.run_in_popup()
+	local buf = vim.api.nvim_create_buf(false, true)
+	local width = vim.o.columns
+	local height = vim.o.lines
+	local win_height = math.ceil(height * 0.9)
+	local win_width = math.ceil(width * 0.75)
+	local row = math.ceil((height - win_height) / 2)
+	local col = math.ceil((width - win_width) / 2)
+
+	local opts = {
+		style = "minimal",
+		relative = "editor",
+		width = win_width,
+		height = win_height,
+		row = row,
+		col = col,
+		border = "single",
+	}
+
+	local win = vim.api.nvim_open_win(buf, true, opts)
+	vim.api.nvim_buf_set_keymap(buf, "n", "q", ":q<CR>", { noremap = true, silent = true })
+
+	vim.fn.termopen("dotnet run")
+
+	--vim.fn.termopen("dotnet run", {
+	--	on_exit = function()
+	--		vim.api.nvim_win_close(win, true)
+	--	end,
+	--})
+end
+
+return M

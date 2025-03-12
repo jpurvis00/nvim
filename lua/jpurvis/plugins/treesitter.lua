@@ -34,6 +34,8 @@ return {
 				"vimdoc",
 				"sql",
 				"c_sharp",
+				"gitcommit",
+				"git_rebase",
 			},
 			incremental_selection = {
 				enable = true,

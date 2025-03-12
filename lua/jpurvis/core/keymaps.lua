@@ -4,7 +4,7 @@ local keymap = vim.keymap -- for conciseness
 
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 keymap.set("n", "qq", ":wq<CR>", { desc = "Save file and quit with qq" })
-keymap.set("n", "ww", ":w<CR>", { desc = "Save file with ww" })
+keymap.set("n", "mm", ":w<CR>", { desc = "Save file with ww" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
