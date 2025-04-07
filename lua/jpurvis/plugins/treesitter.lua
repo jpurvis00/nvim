@@ -36,6 +36,7 @@ return {
 				"c_sharp",
 				"gitcommit",
 				"git_rebase",
+				"typescript",
 			},
 			incremental_selection = {
 				enable = true,

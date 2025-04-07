@@ -76,6 +76,7 @@ return {
 					local path6 = vim.fn.getcwd() .. "/bin/Debug/net6.0/" .. project_name .. ".dll"
 					local path7 = vim.fn.getcwd() .. "/bin/Debug/net7.0/" .. project_name .. ".dll"
 					local path8 = vim.fn.getcwd() .. "/bin/Debug/net8.0/" .. project_name .. ".dll"
+					local path9 = vim.fn.getcwd() .. "/bin/Debug/net9.0/" .. project_name .. ".dll"
 
 					-- Check if the directory exists and return the path to the dll
 					if vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net6.0") == 1 then
@@ -84,6 +85,8 @@ return {
 						return path7
 					elseif vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net8.0") == 1 then
 						return path8
+					elseif vim.fn.isdirectory(vim.fn.getcwd() .. "/bin/Debug/net9.0") == 1 then
+						return path9
 					else
 						return nil -- or handle the case where none of the directories exist
 					end

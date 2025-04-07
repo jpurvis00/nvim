@@ -114,7 +114,7 @@ return {
 				lspconfig["emmet_ls"].setup({
 					capabilities = capabilities,
 					filetypes = {
-						"html",
+						--"html",
 						"typescriptreact",
 						"javascriptreact",
 						"css",
@@ -122,6 +122,24 @@ return {
 						"scss",
 						"less",
 						"svelte",
+					},
+				})
+			end,
+			["html"] = function()
+				-- configure html language server
+				lspconfig["html"].setup({
+					capabilities = capabilities,
+					cmd = { "vscode-html-language-server", "--stdio" },
+					filetypes = {
+						"html",
+						"templ",
+					},
+					init_options = {
+						configurationSection = { "html", "css", "javascript" },
+						embeddedLanguages = {
+							css = true,
+							javascript = true,
+						},
 					},
 				})
 			end,
@@ -142,22 +160,6 @@ return {
 					},
 				})
 			end,
-			--["omnisharp"] = function()
-			--	lspconfig["omnisharp"].setup({
-			--		capabilities = capabilities,
-			--		cmd = {
-			--			"dotnet",
-			--			vim.fn.stdpath("data") .. "/mason/packages/omnisharp/libexec/OmniSharp.dll",
-			--			"--languageserver",
-			--		},
-			--		enable_import_completion = true,
-			--		organize_imports_on_format = true,
-			--		enable_roslyn_analyzers = true,
-			--		root_dir = function()
-			--			return vim.loop.cwd() -- current working directory
-			--		end,
-			--	})
-			--end,
 			["omnisharp"] = function()
 				lspconfig["omnisharp"].setup({
 					capabilities = capabilities,
@@ -204,11 +206,11 @@ return {
 					end,
 				})
 			end,
-			--["tsserver"] = function()
-			--	lspconfig["tsserver"].setup({
-			--		capabilities = capabilities,
-			--	})
-			--end,
+			["ts_ls"] = function()
+				lspconfig["ts_ls"].setup({
+					capabilities = capabilities,
+				})
+			end,
 			["sqls"] = function()
 				lspconfig["sqls"].setup({
 					capabilities = capabilities,

@@ -27,12 +27,12 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				--"tsserver",
+				"ts_ls",
+				"eslint",
 				"html",
 				"cssls",
 				"tailwindcss",
 				"lua_ls",
-				--"csharp_ls",
 				"omnisharp",
 				"jsonls",
 				"sqlls",
@@ -46,12 +46,12 @@ return {
 				"stylua", -- lua formatter
 				"csharpier",
 				"sql-formatter",
-				"typos",
 				"eslint_d",
-				"netcoredbg",
-				"firefox-debug-adapter",
-				"chrome-debug-adapter",
-				--"tsserver",
+				"htmlhint",
+				--"typos",
+				--"netcoredbg",
+				--"firefox-debug-adapter",
+				--"chrome-debug-adapter",
 			},
 		})
 	end,
