@@ -4,7 +4,7 @@ local keymap = vim.keymap -- for conciseness
 
 keymap.set("i", "jj", "<ESC>", { desc = "Exit insert mode with jj" })
 keymap.set("n", "qq", ":wq<CR>", { desc = "Save file and quit with qq" })
-keymap.set("n", "mm", ":w<CR>", { desc = "Save file with ww" })
+keymap.set("n", "mm", ":w<CR>", { desc = "Save file with mm(:w)" })
 keymap.set("n", "cb", ":bd<CR>", { desc = "Close/delete current buffer" })
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
@@ -43,6 +43,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlihgt-yank", { clear = true }),
 	callback = function()
-		vim.highlight.on_yank()
+		--vim.highlight.on_yank()
+		vim.hl.on_yank()
 	end,
 })

@@ -69,54 +69,29 @@ return {
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
-		--local capabilities = cmp_nvim_lsp.default_capabilities()
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
-		mason_lspconfig.setup_handlers({
+		--mason_lspconfig.setup_handlers({
+		mason_lspconfig.setup({
 			-- default handler for installed servers
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = capabilities,
-				})
-			end,
-			--	["svelte"] = function()
-			--		-- configure svelte server
-			--		lspconfig["svelte"].setup({
-			--			capabilities = capabilities,
-			--			on_attach = function(client, bufnr)
-			--				vim.api.nvim_create_autocmd("BufWritePost", {
-			--					pattern = { "*.js", "*.ts" },
-			--					callback = function(ctx)
-			--						-- Here use ctx.match instead of ctx.file
-			--						client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-			--					end,
-			--				})
-			--			end,
-			--		})
-			--	end,
-			--	["graphql"] = function()
-			--		-- configure graphql language server
-			--		lspconfig["graphql"].setup({
-			--			capabilities = capabilities,
-			--			filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-			--		})
-			--	end,
+			-- function(server_name)
+			-- 	vim.lsp.start({
+			-- 		name = server_name,
+			-- 		capabilities = capabilities,
+			-- 	})
+			-- end,
 			["emmet_ls"] = function()
 				-- configure emmet language server
-				lspconfig["emmet_ls"].setup({
+				-- lspconfig["emmet_ls"].setup({
+				vim.lsp.start({
+					name = "emmet_ls",
 					capabilities = capabilities,
 					filetypes = {
-						--"html",
+						"html",
 						"typescriptreact",
 						"javascriptreact",
+						"typescript",
+						"javascript",
 						"css",
 						"sass",
 						"scss",
@@ -127,12 +102,15 @@ return {
 			end,
 			["html"] = function()
 				-- configure html language server
-				lspconfig["html"].setup({
+				--lspconfig["html"].setup({
+				vim.lsp.start({
+					name = "html",
 					capabilities = capabilities,
 					cmd = { "vscode-html-language-server", "--stdio" },
 					filetypes = {
 						"html",
 						"templ",
+						"ejs",
 					},
 					init_options = {
 						configurationSection = { "html", "css", "javascript" },
@@ -145,7 +123,9 @@ return {
 			end,
 			["lua_ls"] = function()
 				-- configure lua server (with special settings)
-				lspconfig["lua_ls"].setup({
+				--lspconfig["lua_ls"].setup({
+				vim.lsp.start({
+					name = "lua_ls",
 					capabilities = capabilities,
 					settings = {
 						Lua = {
@@ -161,7 +141,9 @@ return {
 				})
 			end,
 			["omnisharp"] = function()
-				lspconfig["omnisharp"].setup({
+				--lspconfig["omnisharp"].setup({
+				vim.lsp.start({
+					name = "omnisharp",
 					capabilities = capabilities,
 					cmd = {
 						"dotnet",
@@ -207,20 +189,33 @@ return {
 				})
 			end,
 			["ts_ls"] = function()
-				lspconfig["ts_ls"].setup({
+				--lspconfig["ts_ls"].setup({
+				vim.lsp.start({
+					name = "ts_ls",
 					capabilities = capabilities,
 				})
 			end,
-			["sqls"] = function()
-				lspconfig["sqls"].setup({
-					capabilities = capabilities,
-				})
-			end,
+			--["sqls"] = function()
+			--	lspconfig["sqls"].setup({
+			--		capabilities = capabilities,
+			--	})
+			--end,
 			require("lspconfig").sqls.setup({
 				on_attach = function(client, bufnr)
 					require("sqls").on_attach(client, bufnr) -- require sqls.nvim
 				end,
 			}),
+		})
+		vim.diagnostic.config({
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+			virtual_text = true, -- Add this line to enable inline diagnostics
 		})
 	end,
 }

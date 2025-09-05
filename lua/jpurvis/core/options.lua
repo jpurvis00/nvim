@@ -6,6 +6,10 @@ opt.nu = true
 opt.relativenumber = true
 opt.number = true
 
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldlevel = 99
+
 -- tabs and indentation
 opt.tabstop = 4
 opt.shiftwidth = 4
@@ -64,6 +68,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 -- Set the background to transparent
 vim.cmd("highlight Normal guibg=NONE ctermbg=NONE")
 vim.cmd("highlight NonText guibg=NONE ctermbg=NONE")
+-- not working, trying to set the color of the fold method line vim.cmd("highlight Folded guifg=#A9B1D6 guibg=#1F2335")
 
 -- vim.cmd([[
 --     command! Run execute '!dotnet run'

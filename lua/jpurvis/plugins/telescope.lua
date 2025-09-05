@@ -7,6 +7,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 		"folke/todo-comments.nvim",
 		"benfowler/telescope-luasnip.nvim",
+		"nvim-telescope/telescope-ui-select.nvim",
 	},
 	config = function()
 		local telescope = require("telescope")
@@ -23,11 +24,22 @@ return {
 					},
 				},
 			},
+			extensions = {
+				["ui-select"] = {
+					require("telescope.themes").get_dropdown({}),
+				},
+			},
 		})
 
 		--telescope.load_extension("fzf")
 		require("telescope").load_extension("fzf")
 		require("telescope").load_extension("luasnip")
+		require("telescope").load_extension("ui-select")
+
+		-- Optionally set Telescope as the default vim.ui.select handler
+		vim.ui.select = function(...)
+			require("telescope").extensions["ui-select"].select(...)
+		end
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness

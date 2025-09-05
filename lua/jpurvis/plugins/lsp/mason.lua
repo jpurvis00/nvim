@@ -1,5 +1,6 @@
 return {
-	"williamboman/mason.nvim",
+	--"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	dependencies = {
 		"williamboman/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -28,7 +29,7 @@ return {
 			-- list of servers for mason to install
 			ensure_installed = {
 				"ts_ls",
-				"eslint",
+				--"eslint", --don't believe i need this. redundant with ts_ls for my needs
 				"html",
 				"cssls",
 				"tailwindcss",
@@ -41,12 +42,13 @@ return {
 		})
 
 		mason_tool_installer.setup({
+			-- list of tools for mason to install
 			ensure_installed = {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
 				"csharpier",
 				"sql-formatter",
-				"eslint_d",
+				--"eslint_d",
 				"htmlhint",
 				--"typos",
 				--"netcoredbg",
