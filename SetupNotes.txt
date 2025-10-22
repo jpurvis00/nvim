@@ -36,7 +36,8 @@ Terminal setup notes:
 - Need to install nerd fonts  - https://www.nerdfonts.com
     - at the moment using CaskaydiaCove Nerd Font
 - Install posh themes - https://ohmyposh.dev
-- Powershell settings are kept in $HOME/documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
+- Powershell settings are kept in C:\Program Files\PowerShell\7\profile.ps1
+- NOT BEING USED ANYMORE - Powershell settings are kept in $HOME/documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1
     - update profile
     - had trouble with powershell profile not being loaded. Check $profile to see the correct path of the ps1 file.
 - Install Lsd to give us unix like ls command

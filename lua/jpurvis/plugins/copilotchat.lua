@@ -10,7 +10,7 @@ return {
 			{ "github/copilot.vim" },
 			{ "nvim-lua/plenary.nvim", branch = "master" },
 		},
-		build = "make tiktoken",
+		--build = "make tiktoken",
 		opts = {
 			-- See Configuration section for options
 			mappings = {
