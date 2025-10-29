@@ -16,7 +16,7 @@ return {
 				yaml = { "prettier" },
 				markdown = { "prettier" },
 				lua = { "stylua" },
-				csharp = { "csharpier" },
+				cs = { "csharpier" },
 				sqlfluff = { "sqlfluff" },
 				sql_formatter = { "sql_formatter" },
 				trim_newlines = { "trim_newlines" },

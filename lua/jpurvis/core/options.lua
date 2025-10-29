@@ -78,6 +78,15 @@ vim.cmd([[
     command! Run lua require('jpurvis.core.options').run_in_popup()
 ]])
 
+-- Auto-read files that changed externally
+vim.opt.autoread = true
+
+-- Automatically check for file changes when focusing Neovim
+vim.api.nvim_create_autocmd("FocusGained", {
+	pattern = "*",
+	command = "checktime",
+})
+
 local M = {}
 
 function M.run_in_popup()
